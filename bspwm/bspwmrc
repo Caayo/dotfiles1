@@ -1,0 +1,31 @@
+#! /bin/sh
+#pgrep -x sxhkd > /dev/null || sxhkd &
+
+sxhkd -m -1 &
+picom &
+bash ~/.config/polybar/launch.sh --hack
+setxkbmap -model pc105 -layout us,us -variant ,dvorak -option "grp:alt_space_toggle"
+feh --bg-scale /home/tidus/Pictures/Wallpapers/zanarkandOP.jpg
+xinput set-prop "DELL07EB:00 06CB:7E7E Touchpad" "libinput Tapping Enabled" 1
+
+
+bspc monitor -d I II III IV V VI VII VIII IX X
+
+bspc config border_width         2
+bspc config window_gap          15
+bspc config border_radius        2
+
+bspc config normal_border_color "#44475a"
+bspc config active_border_color "#ff3333"
+
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+
